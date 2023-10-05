@@ -21,7 +21,7 @@
         <a href="#" class="brand-logo"><span>POS SYSTEM</span></a>
     </header>
     <nav class="dashboard-nav-list">
-        <a href="#" class="dashboard-nav-item"><i class="fas fa-home"></i>Home </a>
+        <a href="dashboard.html" class="dashboard-nav-item"><i class="fas fa-home"></i>Home </a>
         <a href="customer.html" class="dashboard-nav-item"><i class="fas fa-user"></i> Customer </a>
         <a href="Item.html" class="dashboard-nav-item"><i class="fas fa-cogs"></i> Item </a>
         <a href="order.html" class="dashboard-nav-item"><i class="fas fa-cogs"></i> Order </a>
@@ -59,10 +59,10 @@
                         <label class="form-label" for="phone">Contact Number</label>
                     </div>
                     <div class="mt-4 mb-5">
-                        <button type="submit" class="btn btn-success">Save</button>
-                        <button type="button" class="btn btn-primary">Update</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                        <button type="reset" class="btn btn-warning">Clear</button>
+                        <button id="submit" type="button" class="btn btn-success">Save</button>
+                        <button id="update" type="button" class="btn btn-primary">Update</button>
+                        <button id="delete" type="button" class="btn btn-danger">Delete</button>
+                        <button id="reset" type="reset" class="btn btn-warning">Clear</button>
                     </div>
                 </form>
             </div>
@@ -77,32 +77,74 @@
                         <th scope="col">Contact</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>Japan</td>
-                        <td>GDSE</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>Australia</td>
-                        <td>DEP</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td >Larry </td>
-                        <td >Bird </td>
-                        <td>Italic</td>
-                        <td>GDSE</td>
-                    </tr>
+                    <tbody id="table-body">
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+<script src="assets/lib/jquery.min.js"></script>
+<script>
+
+    $('#submit').on('click',()=>{
+        let id = $('#id').val();
+        let name = $('#name').val();
+        let address  = $('#address').val();
+        let email = $('#email').val();
+        let contact = $('#phone').val();
+
+        let recode = `<td class = "id">${id}</td><td class="name">${name}</td><td class="address">${address}</td><td class="email">${email}</td><td class="phone">${contact}</td>`
+
+        let newRow = $('<tr>');
+        newRow.append('<td>' + id + '</td>');
+        newRow.append('<td>' + name + '</td>');
+        newRow.append('<td>' + address + '</td>');
+        newRow.append('<td>' + email + '</td>');
+        newRow.append('<td>' + contact + '</td>');
+
+        $('#table-body').append(newRow);
+
+        $("#reset").click();
+    });
+
+    $('#update').on('click',()=>{
+        let id = $('#id').val();
+        let name = $('#name').val();
+        let address  = $('#address').val();
+        let email = $('#email').val();
+        let contact = $('#phone').val();
+
+        let recode = `<td class = "id">${id}</td><td class="name">${name}</td><td class="address">${address}</td><td class="email">${email}</td><td class="phone">${contact}</td>`
+
+        $("tbody>tr").eq(row_index).html(recode);
+
+        $("#reset").click();
+    });
+
+    $('#delete').on('click',()=>{
+        $("tbody>tr").eq(row_index).remove();
+
+        $("#reset").click();
+    });
+
+    $("tbody").on("click", "tr", function () {
+
+        row_index = $(this).index();
+
+        let id = $(this).find("td:eq(0)").text();
+        let name = $(this).find("td:eq(1)").text();
+        let address = $(this).find("td:eq(2)").text();
+        let email = $(this).find("td:eq(3)").text();
+        let contact = $(this).find("td:eq(4)").text();
+
+        $('#id').val(id);
+        $('#name').val(name);
+        $('#address').val(address);
+        $('#email').val(email);
+        $('#phone').val(contact);
+
+    });
+
+</script>
 </body>
 </html>

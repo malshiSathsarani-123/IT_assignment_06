@@ -267,19 +267,3 @@ a:hover {
     overflow: hidden;
     background-color: rgba(236, 238, 239, 0.3);
 }
-
-@media (max-width: 992px) {
-    .dashboard-nav {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        z-index: 1070;
-    }
-
-    .dashboard-nav.mobile-show {
-        display: block;
-    }
-}

@@ -19,7 +19,6 @@
 <body>
     <section>
         <div>
-            <img src="https://img.freepik.com/premium-photo/purple-flowers-dark-background-with-pink-glow-generative-ai_958165-11468.jpg?size=626&ext=jpg&uid=R95950819&ga=GA1.2.1067610900.1678523824&semt=ais" alt="background" title="background img" width="100%">
         </div>
         <div class="main">
         <h1>Welcome!</h1>
@@ -29,16 +28,19 @@
         <div>
             <h1>Sign In</h1>
             <form>
-                <div class="mb-3">
-                    <label for="username" class="form-label">User Name</label>
-                    <input type="text" class="form-control" id="username" aria-describedby="username">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
+                <form>
+                    <div class="mb-3">
+                        <input class="form-control-input" id="id" type="text" required>
+                        <label for="id" class="form-label">Id</label>
+                    </div>
+                    <div class="mb-3">
+                        <input id="name" class="form-control-input" type="text" required>
+                        <label class="form-label" for="name">Name</label>
+                    </div>
+                </form>
                 <h3>Create Account</h3>
-                <button type="submit" class="btn btn-primary">Sign In</button>
+                <a href="dashboard.html"><button type="submit" class="btn btn-primary">Sign In</button></a>
+
             </form>
         </div>
         </div>
