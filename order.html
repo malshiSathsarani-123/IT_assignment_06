@@ -46,7 +46,8 @@
                         <label for="date" class="form-label">Order Date</label>
                     </div>
                     <div class="mb-3">
-                        <select class="form-control-input" id="selectCusID"></select>
+<!--                        <select class="form-control-input" id="selectCusID"></select>-->
+                        <input class="form-control-input" id="selectCusID" type="text" required>
                         <label for="selectCusID" class="form-label">Customer Id</label>
                     </div>
                     <div class="mb-3">
@@ -91,7 +92,7 @@
                         <label class="form-label" for="orderQty">Order Qty</label>
                     </div>
                     <div class="mt-4 mb-5">
-                        <button type="button" class="btn btn-primary">Add Item</button>
+                        <button id="add_item" type="button" class="btn btn-primary">Add Item</button>
                     </div>
                 </form>
             </div>
@@ -110,7 +111,7 @@
                         <label class="form-label" for="balance">Balance</label>
                     </div>
                     <div class="mt-4 mb-5">
-                        <button type="submit" class="btn btn-success">Place Order</button>
+                        <button type="button" class="btn btn-success">Place Order</button>
                     </div>
                 </form>
             </div>
@@ -128,11 +129,29 @@
                 </tr>
                 </thead>
                 <tbody class="bg-light text-dark" id="orderTable">
-
                 </tbody>
             </table>
         </div>
         </div>
     </div>
+<script src="assets/lib/jquery.min.js"></script>
+<script>
+    $('#add_item').on('click',()=>{
+        let itemCode = $('#itemCode').val();
+        let description = $('#description').val();
+        let price  = $('#price').val();
+        let orderQty = $('#orderQty').val();
+        let total = price*orderQty;
+
+        let newRow = $('<tr>');
+        newRow.append('<td>' + itemCode + '</td>');
+        newRow.append('<td>' + description + '</td>');
+        newRow.append('<td>' + price + '</td>');
+        newRow.append('<td>' + orderQty + '</td>');
+        newRow.append('<td>' + total + '</td>');
+
+        $('#orderTable').append(newRow);
+    });
+</script>
 </body>
 </html>
